@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DXF Circle Area Calculator</title>
+
+    <!-- Google Fonts: Krona One -->
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/dxf-parser@1.1.2/dist/dxf-parser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three-dxf@1.3.0/dist/three-dxf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipper-lib@6.4.2/clipper.min.js"></script>
+    <script src="app.js" defer></script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Krona One', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #E0E0E0;
+            color: #333333;
+        }
+
+        h1, h2 {
+            color: #424242;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2em;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        /* Custom File Input */
+        .file-input-container {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        #dxfFile {
+            display: none;
+        }
+
+        .custom-file-label {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #9E9E9E;
+            border-radius: 5px;
+            background-color: #F5F5F5;
+            color: #424242;
+            cursor: pointer;
+            text-align: center;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .custom-file-label:hover {
+            background-color: #EEEEEE;
+            border-color: #757575;
+        }
+
+        /* Ratio Display */
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #9E9E9E;
+            background-color: #F5F5F5;
+            border-radius: 10px;
+            color: #424242;
+        }
+
+        /* Preview Container */
+        #preview {
+            width: 100%;
+            height: 500px;
+            margin-top: 20px;
+            border: 2px solid #9E9E9E;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #previewCanvas {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Additional Styles */
+        #result p {
+            margin: 10px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            #preview {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>DXF Circle Area Calculator</h1>
+
+    <!-- Ratio Section -->
+    <div id="result">
+        <h2>Results</h2>
+    </div>
+
+    <!-- DXF Preview Section -->
+    <h2>DXF Preview</h2>
+    <div id="preview">
+        <div id="previewCanvas"></div>
+    </div>
+
+    <!-- Custom File Input -->
+    <div class="file-input-container">
+        <label for="dxfFile" class="custom-file-label">Select DXF File</label>
+        <input type="file" id="dxfFile" accept=".dxf">
+    </div>
+</body>
+</html>
